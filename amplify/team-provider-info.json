@@ -1,0 +1,15 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-athletespace-dev-12139-authRole",
+            "UnauthRoleArn": "arn:aws:iam::957570469111:role/amplify-athletespace-dev-12139-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::957570469111:role/amplify-athletespace-dev-12139-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-athletespace-dev-12139-deployment",
+            "UnauthRoleName": "amplify-athletespace-dev-12139-unauthRole",
+            "StackName": "amplify-athletespace-dev-12139",
+            "StackId": "arn:aws:cloudformation:us-east-1:957570469111:stack/amplify-athletespace-dev-12139/36be7720-7909-11ea-a3b8-0ec446493c7d",
+            "AmplifyAppId": "d1wj9rhitxg1h1"
+        }
+    }
+}
