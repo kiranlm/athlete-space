@@ -3,15 +3,14 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import appSyncConfig from './aws-exports';
 import { ApolloProvider } from 'react-apollo';
-import AWSAppSyncClient, { defaultDataIdFromObject } from 'aws-appsync';
+import AWSAppSyncClient from 'aws-appsync';
 import { Rehydrated } from 'aws-appsync-react';
-
-const Home = () => <div>Welcome</div>;
+import Dashboard from './Components/Dashboard';
 
 const App = () => (
   <Router>
     <div>
-      <Route path="/" component={Home} />
+      <Route path="/" component={Dashboard} />
     </div>
   </Router>
 );
