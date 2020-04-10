@@ -10,6 +10,21 @@
             "StackName": "amplify-athletespace-dev-12139",
             "StackId": "arn:aws:cloudformation:us-east-1:957570469111:stack/amplify-athletespace-dev-12139/36be7720-7909-11ea-a3b8-0ec446493c7d",
             "AmplifyAppId": "d1wj9rhitxg1h1"
+        },
+        "categories": {
+            "function": {
+                "athletespace63fca187DefineAuthChallenge": {},
+                "athletespace63fca187CreateAuthChallenge": {},
+                "athletespace63fca187VerifyAuthChallengeResponse": {
+                    "RECAPTCHASECRET": "t5yghuj"
+                },
+                "athletespace213e9bcePreTokenGeneration": {}
+            },
+            "auth": {
+                "athletespace4255c3a5": {
+                    "hostedUIProviderCreds": "[{\"ProviderName\":\"Facebook\",\"client_id\":\"215835389849970\",\"client_secret\":\"9eacc3c097f0e4f3f144541900448fcd\"},{\"ProviderName\":\"Google\",\"client_id\":\"971363083230-po4jv3h7vhshvrbv3r0g1femqt87kbab.apps.googleusercontent.com\",\"client_secret\":\"WKcZlCDR_mIl0fQgIitKR5gx\"}]"
+                }
+            }
         }
     }
 }

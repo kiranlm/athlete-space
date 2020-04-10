@@ -9,6 +9,7 @@
     "@testing-library/react": "^10.0.2",
     "@testing-library/user-event": "^10.0.1",
     "apollo-client": "^2.6.8",
+    "aws-amplify": "^3.0.7",
     "aws-appsync": "^3.0.1",
     "aws-appsync-react": "^3.0.1",
     "formik": "^2.1.4",
