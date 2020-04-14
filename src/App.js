@@ -1,12 +1,12 @@
 import React, { useReducer, useEffect } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import appSyncConfig from './aws-exports';
 import { ApolloProvider } from 'react-apollo';
 import AWSAppSyncClient from 'aws-appsync';
 import { Rehydrated } from 'aws-appsync-react';
 import Dashboard from './Components/Dashboard';
-import Login from './Components/Login';
+import Authenticate from './Components/Authenticate';
 import Amplify, { Hub, Auth } from 'aws-amplify';
 
 Amplify.configure(appSyncConfig);
@@ -34,8 +34,12 @@ const App = () => {
   return (
     <Router>
       <div>
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/" component={Dashboard} />
+        <Switch>
+          <Route path="/auth" component={Authenticate} />
+        </Switch>
+        <Route exact path="/">
+          <Dashboard userState={userState} />
+        </Route>
       </div>
     </Router>
   );
@@ -61,14 +65,6 @@ async function checkUser(dispatch) {
     console.log('err: ', err);
     dispatch({ type: 'loaded' });
   }
-}
-
-function signOut() {
-  Auth.signOut()
-    .then((data) => {
-      console.log('signed out: ', data);
-    })
-    .catch((err) => console.log(err));
 }
 
 const client = new AWSAppSyncClient({
