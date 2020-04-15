@@ -7,14 +7,7 @@ function AlertUI(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '100%',
-    '& > * + *': {
-      marginTop: theme.spacing(2),
-    },
-  },
-}));
+const useStyles = makeStyles({});
 
 export default function Alert(props) {
   const classes = useStyles();
@@ -29,17 +22,15 @@ export default function Alert(props) {
   };
 
   return (
-    <div className={classes.root}>
-      <Snackbar
-        open={open}
-        autoHideDuration={4000}
-        onClose={handleClose}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-      >
-        <AlertUI onClose={handleClose} severity={severity || 'info'}>
-          {message}
-        </AlertUI>
-      </Snackbar>
-    </div>
+    <Snackbar
+      open={open}
+      autoHideDuration={4000}
+      onClose={handleClose}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+    >
+      <AlertUI onClose={handleClose} severity={severity || 'info'}>
+        {message}
+      </AlertUI>
+    </Snackbar>
   );
 }

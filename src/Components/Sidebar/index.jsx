@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
@@ -14,6 +14,9 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import VpnKeyIcon from '@material-ui/icons/VpnKey';
 import { Box } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
+import Loader from '../UI/Loader';
+
+import { Auth } from 'aws-amplify';
 
 const drawerWidth = 240;
 
@@ -40,6 +43,7 @@ export default function Sidebar(props) {
   const { open } = props;
   const classes = useStyles();
   const theme = useTheme();
+  const [loading, setLoading] = useState(false);
 
   return (
     <Drawer
@@ -85,13 +89,16 @@ export default function Sidebar(props) {
             </ListItemIcon>
             <ListItemText
               primary={'Log Out'}
-              onClick={() => {
-                history.push('/auth/logout');
+              onClick={async () => {
+                setLoading(true);
+                await Auth.signOut();
+                history.push('/auth/login');
               }}
             />
           </ListItem>
         </List>
       </Box>
+      {loading && <Loader />}
     </Drawer>
   );
 }

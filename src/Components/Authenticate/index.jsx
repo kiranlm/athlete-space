@@ -3,13 +3,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
-import {
-  Switch,
-  Route,
-  useRouteMatch,
-  useHistory,
-  Redirect,
-} from 'react-router-dom';
+import { Switch, Route, useRouteMatch, useHistory } from 'react-router-dom';
 
 import { Auth } from 'aws-amplify';
 import SignInForm from './SignInForm';
@@ -18,6 +12,9 @@ import SignUpConfirm from './SignUpConfirm';
 
 import Loader from '../UI/Loader';
 import Alert from '../UI/Alert';
+import ForgotPassword from './ForgotPassword';
+import ResetPassword from './ResetPassword';
+import { AUTH_TOKEN } from '../../Constants';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -94,11 +91,46 @@ export default function Authenticate() {
     setLoading(false);
   }
 
+  async function forgotPassword({ username }) {
+    setLoading(true);
+    try {
+      await Auth.forgotPassword(username);
+      console.log('forgot success!');
+      history.push(`${match.path}/reset-password`);
+    } catch (err) {
+      console.log('error signing up..', err);
+      setError(err);
+    }
+    setLoading(false);
+  }
+
+  async function resetPassword({ username, confirmationCode, password }) {
+    setLoading(true);
+    try {
+      await Auth.forgotPasswordSubmit(
+        username.trim(),
+        confirmationCode.trim(),
+        password.trim()
+      );
+      console.log('forgot success!');
+      history.push(`${match.path}/login`);
+    } catch (err) {
+      console.log('error signing up..', err);
+      setError(err);
+    }
+    setLoading(false);
+  }
+
   async function signIn({ username, password }) {
     setLoading(true);
     try {
       const user = await Auth.signIn(username, password);
+      console.log(user);
       console.log('sign in success!');
+      // localStorage.setItem(
+      //   AUTH_TOKEN,
+      //   user.signInUserSession.accessToken.jwtToken
+      // );
       history.push('/');
     } catch (err) {
       console.log('error signing up..', err);
@@ -129,17 +161,14 @@ export default function Authenticate() {
           <Route path={`${match.path}/register`}>
             <SignUpForm classes={classes} signUp={signUp} />
           </Route>
-          <Route
-            path={`${match.path}/logout`}
-            render={async () => {
-              setLoading(true);
-              await Auth.signOut();
-              // TODO: fix it
-              return <Redirect to={`${match.path}/login`} />;
-            }}
-          />
           <Route path={`${match.path}/activate`}>
             <SignUpConfirm classes={classes} confirmSignUp={confirmSignUp} />
+          </Route>
+          <Route path={`${match.path}/forgot-password`}>
+            <ForgotPassword classes={classes} forgotPassword={forgotPassword} />
+          </Route>
+          <Route path={`${match.path}/reset-password`}>
+            <ResetPassword classes={classes} resetPassword={resetPassword} />
           </Route>
         </Switch>
       </Grid>
