@@ -14,22 +14,22 @@ import Loader from '../UI/Loader';
 import Alert from '../UI/Alert';
 import ForgotPassword from './ForgotPassword';
 import ResetPassword from './ResetPassword';
-import { AUTH_TOKEN } from '../../Constants';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
   },
-  image: {
-    backgroundImage: 'url(https://source.unsplash.com/collection/1244074)',
-    backgroundRepeat: 'no-repeat',
-    backgroundColor:
-      theme.palette.type === 'light'
-        ? theme.palette.grey[50]
-        : theme.palette.grey[900],
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
+  leftPane: {
+    background: 'linear-gradient(75deg, #ffc400 83%, transparent 20.2%)',
   },
+  /**width: 112px;
+    height: 47px;
+    border-bottom: 1px solid red;
+    -webkit-transform:
+        translateY(-20px)
+        translateX(5px)
+        rotate(27deg); 
+    position: absolute; */
   paper: {
     margin: theme.spacing(8, 4),
     display: 'flex',
@@ -152,8 +152,8 @@ export default function Authenticate() {
         />
       )}
       <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} className={classes.image} />
-      <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+      <Grid item xs={false} sm={4} md={7} className={classes.leftPane} />
+      <Grid item xs={12} sm={8} md={5}>
         <Switch>
           <Route path={`${match.path}/login`}>
             <SignInForm classes={classes} signIn={signIn} />

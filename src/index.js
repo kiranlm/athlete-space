@@ -8,6 +8,18 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 const theme = createMuiTheme({
+  overrides: {
+    MuiButton: {
+      root: {
+        borderRadius: 0,
+      },
+    },
+    MuiOutlinedInput: {
+      root: {
+        borderRadius: 0,
+      },
+    },
+  },
   palette: {
     primary: {
       light: '#a43773',
