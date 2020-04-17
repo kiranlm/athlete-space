@@ -118,13 +118,13 @@ export default function SignInForm(props) {
                 Sign In
               </Button>
               <Grid container>
-                <Grid item>
+                <Grid item xs>
                   <Link
                     to="/auth/register"
                     label={"Don't have an account? Sign Up"}
                   />
                 </Grid>
-                <Grid item>
+                <Grid item xs>
                   <Link
                     to="/auth/forgot-password"
                     label={'Forgot password? Reset here'}

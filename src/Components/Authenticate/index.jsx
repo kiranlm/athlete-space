@@ -14,13 +14,15 @@ import Loader from '../UI/Loader';
 import Alert from '../UI/Alert';
 import ForgotPassword from './ForgotPassword';
 import ResetPassword from './ResetPassword';
+import { Box, Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100vh',
   },
   leftPane: {
-    background: 'linear-gradient(75deg, #ffc400 83%, transparent 20.2%)',
+    background: 'linear-gradient(75deg, #8E0551 80%, transparent 80.2%)',
+    color: '#fff',
   },
   /**width: 112px;
     height: 47px;
@@ -46,6 +48,9 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+  },
+  logo: {
+    marginRight: '2rem',
   },
 }));
 
@@ -152,7 +157,45 @@ export default function Authenticate() {
         />
       )}
       <CssBaseline />
-      <Grid item xs={false} sm={4} md={7} className={classes.leftPane} />
+      <Grid item xs={false} sm={4} md={7} className={classes.leftPane}>
+        <Box component={Grid} container m={3} alignItems="center">
+          <Box component={Grid} item sm={12} display="flex" alignItems="center">
+            <img
+              src="/images/logo.png"
+              width="100px"
+              alt="logo"
+              className={classes.logo}
+            />
+            <h1> Site Title</h1>
+          </Box>
+          <Box
+            component={Grid}
+            item
+            sm={12}
+            display="flex"
+            alignItems="flex-start"
+            flexDirection="column"
+          >
+            <h2>Your tagline here ...</h2>
+            <img
+              src="/images/loginbg.png"
+              width="550px"
+              alt="logo"
+              className={classes.logo}
+            />
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Excepturi expedita nisi dolore ipsa ex dolor
+              <br /> sequi est culpa, ullam illo consectetur dignissimos
+              temporibus impedit, consequuntur voluptatibus <br />
+              fugit maiores quasi officia!
+            </p>
+            <Button variant="contained" color="secondary">
+              Know more
+            </Button>
+          </Box>
+        </Box>
+      </Grid>
       <Grid item xs={12} sm={8} md={5}>
         <Switch>
           <Route path={`${match.path}/login`}>

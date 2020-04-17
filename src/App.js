@@ -1,5 +1,10 @@
 import React, { useReducer, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom';
 
 import appSyncConfig from './aws-exports';
 import { ApolloProvider } from 'react-apollo';
@@ -8,6 +13,7 @@ import { Rehydrated } from 'aws-appsync-react';
 import Dashboard from './Components/Dashboard';
 import Authenticate from './Components/Authenticate';
 import Amplify, { Hub, Auth } from 'aws-amplify';
+import Loader from './Components/UI/Loader';
 
 Amplify.configure(appSyncConfig);
 
@@ -30,15 +36,19 @@ const App = () => {
     });
     checkUser(dispatch);
   }, []);
-
   return (
     <Router>
+      {userState && userState.loading && <Loader />}
       <div>
         <Switch>
           <Route path="/auth" component={Authenticate} />
         </Switch>
         <Route exact path="/">
-          <Dashboard userState={userState} />
+          {userState && !userState.loading && !userState.user ? (
+            <Redirect to="/auth/login" />
+          ) : (
+            <Dashboard userState={userState} />
+          )}
         </Route>
       </div>
     </Router>

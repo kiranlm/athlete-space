@@ -92,7 +92,7 @@ export default function Sidebar(props) {
               onClick={async () => {
                 setLoading(true);
                 await Auth.signOut();
-                history.push('/auth/login');
+                // history.push('/auth/login');
               }}
             />
           </ListItem>
