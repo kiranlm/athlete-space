@@ -1,25 +1,38 @@
 :construction: App under construction
 
-# About the app
+## :running: Athlete space
 
-An application for athletes for exploring activities from multiple tracking apps like strava,runkeeper etc
+An application for athletes to explore activities from multiple tracking apps like strava,runkeeper etc
 
-## React Setup
+## :bulb: Tech stack
+
+- [ ] React
+- [ ] GraphQL with AppSync
+- [ ] AWS Lambda
+- [ ] Cognito for authentication
+
+## :electric_plug: Installation
 
 First, clone this repo:
 
-```
+```bash
+
 git clone https://github.com/kiranlm/athlete-space.git
+
 cd ./athlete-space
+
 ```
 
 Add `aws-exports.js` file in the root of your app with the aws configuration.
 
 Start the application:
 
-```
+```bash
+
 npm
+
 npm run start
+
 ```
 
-We :purple_heart: **Opensource**
+> We :purple_heart: **Opensource**
