@@ -29,10 +29,10 @@ Start the application:
 
 ```bash
 
-npm
+yarn
 
-npm run start
+yarn start
 
 ```
 
-> We :purple_heart: **Opensource**
+> We :heart: **Opensource**
